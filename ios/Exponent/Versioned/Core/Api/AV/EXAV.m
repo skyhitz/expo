@@ -125,7 +125,8 @@ NSString *const EXDidUpdatePlaybackStatusEventName = @"didUpdatePlaybackStatus";
 - (void)_bridgeDidBackground:(NSNotification *)notification
 {
   _isBackgrounded = YES;
-  [self _deactivateAudioSession]; // This will pause all players and stop all recordings
+  // This will pause all players and stop all recordings
+  // [self _deactivateAudioSession]; 
   
   [self _runBlockForAllAVObjects:^(NSObject<EXAVObject> *exAVObject) {
     [exAVObject bridgeDidBackground:notification];
