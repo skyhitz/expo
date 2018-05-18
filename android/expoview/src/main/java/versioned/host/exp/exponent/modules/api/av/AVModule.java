@@ -152,13 +152,13 @@ public class AVModule extends ExpoKernelServiceConsumerBaseModule
 
   @Override
   public void onHostPause() {
-    if (!mAppIsPaused) {
-      mAppIsPaused = true;
-      for (final AudioEventHandler handler : getAllRegisteredAudioEventHandlers()) {
-        handler.onPause();
-      }
-      abandonAudioFocus();
-    }
+//    if (!mAppIsPaused) {
+//      mAppIsPaused = true;
+//      for (final AudioEventHandler handler : getAllRegisteredAudioEventHandlers()) {
+//        handler.onPause();
+//      }
+//      abandonAudioFocus();
+//    }
   }
 
   @Override

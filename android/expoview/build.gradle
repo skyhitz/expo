@@ -130,8 +130,8 @@ task packageExponentNdkLibs(dependsOn: buildExponentNdkLib, type: Copy) {
 
 
 android {
-  compileSdkVersion 26
-  buildToolsVersion "26.0.1"
+  compileSdkVersion 27
+  buildToolsVersion '27.0.3'
 
   defaultConfig {
     minSdkVersion 19
@@ -178,15 +178,13 @@ task generateDynamicMacros(type: Exec) {
 preBuild.dependsOn generateDynamicMacros
 
 dependencies {
-  compile fileTree(dir: 'libs', include: ['*.jar'])
+  compile fileTree(include: ['*.jar'], dir: 'libs')
   compile 'com.android.support:multidex:1.0.1'
-
   // Current react native
   compile project(':ReactAndroid')
   /* UNCOMMENT WHEN DISTRIBUTING
-  compile 'com.facebook.react:react-native:27.0.0'
-  END UNCOMMENT WHEN DISTRIBUTING */
-
+    compile 'com.facebook.react:react-native:27.0.0'
+    END UNCOMMENT WHEN DISTRIBUTING */
   // Versioned react native
   // THIS COMMENT IS USED BY android-build-aar.sh DO NOT MODIFY
   compile 'host.exp:reactandroid-abi27_0_0:1.0.0'
@@ -196,7 +194,6 @@ dependencies {
   compile 'host.exp:reactandroid-abi23:1.0.0'
   compile 'host.exp:reactandroid-abi22:1.0.0'
   compile 'host.exp:reactandroid-abi21:1.0.0'
-
   // React native dependencies
   // We use a different version of appcompat
   compile 'com.android.support:recyclerview-v7:26.0.1'
@@ -216,7 +213,6 @@ dependencies {
   compile 'expolib_v1.com.squareup.okhttp3:okhttp-urlconnection:3.6.0'
   compile 'expolib_v1.com.squareup.okio:okio:1.13.0'
   compile 'org.webkit:android-jsc:r174650'
-
   // Our dependencies
   compile 'com.android.support:appcompat-v7:26.0.1'
   compile 'com.android.support:customtabs:26.0.1'
@@ -230,7 +226,8 @@ dependencies {
   }
   provided 'org.glassfish:javax.annotation:3.1.1'
   compile 'de.greenrobot:eventbus:2.4.0'
-  compile 'com.amplitude:android-sdk:2.9.2' // Be careful when upgrading! Upgrading might break experience scoping. Check with Jesse. See Analytics.resetAmplitudeDatabaseHelper
+  compile 'com.amplitude:android-sdk:2.9.2'
+  // Be careful when upgrading! Upgrading might break experience scoping. Check with Jesse. See Analytics.resetAmplitudeDatabaseHelper
   compile 'com.squareup.picasso:picasso:2.5.2'
   compile 'com.google.android.gms:play-services-gcm:9.8.0'
   compile 'com.google.android.gms:play-services-analytics:9.8.0'
@@ -240,14 +237,15 @@ dependencies {
   compile 'com.google.android.gms:play-services-ads:9.8.0'
   compile 'com.google.android.gms:play-services-fitness:9.8.0'
   compile 'com.google.android.gms:play-services-vision:9.8.0'
-  compile 'com.google.android.gms:play-services-wallet:9.8.0' //may need 10.+
+  compile 'com.google.android.gms:play-services-wallet:9.8.0'
+  //may need 10.+
   compile 'com.stripe:stripe-android:2.1.+'
   compile 'com.github.thefuntasty:CreditCardEntry:1.4.8.4'
   apt 'com.raizlabs.android:DBFlow-Compiler:2.2.1'
-  compile "com.raizlabs.android:DBFlow-Core:2.2.1"
-  compile "com.raizlabs.android:DBFlow:2.2.1"
-  compile "com.madgag.spongycastle:core:1.53.0.0"
-  compile "com.madgag.spongycastle:prov:1.53.0.0"
+  compile 'com.raizlabs.android:DBFlow-Core:2.2.1'
+  compile 'com.raizlabs.android:DBFlow:2.2.1'
+  compile 'com.madgag.spongycastle:core:1.53.0.0'
+  compile 'com.madgag.spongycastle:prov:1.53.0.0'
   debugCompile 'com.squareup.leakcanary:leakcanary-android-no-op:1.4-beta1'
   // debugCompile 'com.squareup.leakcanary:leakcanary-android:1.4-beta1'
   releaseCompile 'com.squareup.leakcanary:leakcanary-android-no-op:1.4-beta1'
@@ -272,8 +270,8 @@ dependencies {
   compile 'com.google.firebase:firebase-messaging:9.8.0'
   compile 'com.google.maps.android:android-maps-utils:0.5+'
   /*compile('com.gettipsi:stripeview:1.0.0') {
-      transitive = false
-      exclude group: 'com.facebook.react', module: 'react-native'
-  }*/
+        transitive = false
+        exclude group: 'com.facebook.react', module: 'react-native'
+    }*/
   // Remember to update DetachAppTemplate build.gradle if you add any excludes or transitive = false here!
 }
