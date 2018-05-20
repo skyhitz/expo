@@ -124,13 +124,14 @@ NSString *const EXDidUpdatePlaybackStatusEventName = @"didUpdatePlaybackStatus";
 
 - (void)_bridgeDidBackground:(NSNotification *)notification
 {
-  _isBackgrounded = YES;
-  [self _deactivateAudioSession]; // This will pause all players and stop all recordings
+  // _isBackgrounded = YES;
+  // This will pause all players and stop all recordings
+  // [self _deactivateAudioSession]; 
   
-  [self _runBlockForAllAVObjects:^(NSObject<EXAVObject> *exAVObject) {
-    [exAVObject bridgeDidBackground:notification];
-  }];
-  [_kernelAudioSessionManagerDelegate scopedModuleDidBackground:self];
+  // [self _runBlockForAllAVObjects:^(NSObject<EXAVObject> *exAVObject) {
+  //   [exAVObject bridgeDidBackground:notification];
+  // }];
+  // [_kernelAudioSessionManagerDelegate scopedModuleDidBackground:self];
 }
 
 #pragma mark - RCTEventEmitter
